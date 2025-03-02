@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания для Анели</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6a1b9a;
+        }
+
+        .section {
+            display: none;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .active {
+            display: block;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #6a1b9a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9c4dcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Задания для Анели</h1>
+
+    <div class="section" id="section1">
+        <h2>Первое задание</h2>
+        <p>Ты пройдешь его, если сможешь выменять код на что-то у Альбинур.</p>
+        <p>Введи код:</p>
+        <input type="text" id="code1">
+        <button onclick="checkCode1()">Проверить код</button>
+        <p id="message1" style="color: red;"></p>
+    </div>
+
+    <div class="section" id="section2">
+        <h2>Второе задание</h2>
+        <p>Ты получишь второй код, если сможешь рассмешить Рус (парня Альбинур).</p>
+        <p>Введи код:</p>
+        <input type="text" id="code2">
+        <button onclick="checkCode2()">Проверить код</button>
+        <p id="message2" style="color: red;"></p>
+    </div>
+
+    <div class="section" id="section3">
+        <h2>Третье задание</h2>
+        <p>Ты получишь код от Юсупчика, если сможешь угадать мультик, который она загадала.</p>
+        <p>Введи код:</p>
+        <input type="text" id="code3">
+        <button onclick="checkCode3()">Проверить код</button>
+        <p id="message3" style="color: red;"></p>
+    </div>
+
+    <div class="section" id="final">
+        <h2>Поздравляю!</h2>
+        <p>Ты прошла все задания! Теперь ты можешь перейти на следующий сайт.</p>
+        <a href="https://ibrash03.github.io/8Marta/" target="_blank"><button>то что тебя ждет)</button></a>
+    </div>
+
+    <script>
+        let currentSection = 1;
+
+        function showSection(sectionNumber) {
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('section' + i).classList.remove('active');
+            }
+            document.getElementById('section' + sectionNumber).classList.add('active');
+        }
+
+        function checkCode1() {
+            let code = document.getElementById('code1').value;
+            if (code == '3382') {
+                document.getElementById('message1').innerHTML = 'Правильный код! Переходи ко второму заданию.';
+                showSection(2);
+            } else {
+                document.getElementById('message1').innerHTML = 'Неправильный код. Попробуй снова.';
+            }
+        }
+
+        function checkCode2() {
+            let code = document.getElementById('code2').value;
+            if (code == '4850') {
+                document.getElementById('message2').innerHTML = 'Правильный код! Переходи к третьему заданию.';
+                showSection(3);
+            } else {
+                document.getElementById('message2').innerHTML = 'Неправильный код. Попробуй снова.';
+            }
+        }
+
+        function checkCode3() {
+            let code = document.getElementById('code3').value;
+            if (code == '7485') {
+                document.getElementById('message3').innerHTML = 'Правильный код! Поздравляем с прохождением всех заданий!';
+                document.getElementById('final').classList.add('active');
+            } else {
+                document.getElementById('message3').innerHTML = 'Неправильный код. Попробуй снова.';
+            }
+        }
+
+        // Показываем первый раздел по умолчанию
+        showSection(1);
+    </script>
+</body>
+</html>
